@@ -171,3 +171,11 @@ fun TampilData(
             ) {
                 items.forEach { item ->
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text(
+                            text = item.first.uppercase(),
+                            fontSize = 16.sp
+                        )
+            }
+        }
+    }
+}
