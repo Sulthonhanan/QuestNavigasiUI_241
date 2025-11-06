@@ -147,3 +147,13 @@ fun TampilData(
         Pair("Jenis Kelamin", "Lainnya"),
         Pair("Alamat", "Yogyakarta")
     )
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Data Tampil", color = Color.White) },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = colorResource(id = R.color.teal_700)
+                )
+            )
+        }
