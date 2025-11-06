@@ -36,4 +36,17 @@ fun DataApp(
             navController = navController,
             startDestination = Navigasi.Formulir.name,
             modifier = Modifier.padding(isiRuang)
-        )
+        ) {
+            composable(Navigasi.Formulir.name) {
+                FormIsian(
+                    OnSubmitBtnClick = { navController.navigate(Navigasi.Detail.name) }
+                )
+            }
+            composable(Navigasi.Detail.name) {
+                TampilData(
+                    onBackBtnClick = { navController.popBackStack() }
+                )
+            }
+        }
+    }
+}
