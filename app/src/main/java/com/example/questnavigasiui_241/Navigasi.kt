@@ -55,4 +55,14 @@ fun DataApp(
 fun FormIsian(
     jenisK: List<String> = listOf("Laki-laki", "Perempuan"),
     OnSubmitBtnClick: () -> Unit
-)
+) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Formulir", color = Color.White) },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = colorResource(id = R.color.teal_700)
+                )
+            )
+        }
+    )
