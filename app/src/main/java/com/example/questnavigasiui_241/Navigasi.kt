@@ -92,3 +92,12 @@ fun FormIsian(
                     .width(250.dp),
                 thickness = 1.dp,
                 color = Color.Red
+            )
+
+            // Pilihan Jenis Kelamin
+            Row {
+                jenisK.forEach { item ->
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(horizontal = 8.dp)
+                    )
