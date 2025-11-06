@@ -137,3 +137,8 @@ fun FormIsian(
         }
     }
 }
+
+@Composable
+fun TampilData(
+    onBackBtnClick: () -> Unit
+)
