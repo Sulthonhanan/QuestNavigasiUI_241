@@ -75,4 +75,13 @@ fun FormIsian(
                 .padding(isiRuang)
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
-        )
+        ) {
+            OutlinedTextField(
+                value = nama,
+                onValueChange = { nama = it },
+                label = { Text("Nama Lengkap") },
+                singleLine = true,
+                modifier = Modifier
+                    .padding(top = 20.dp)
+                    .width(250.dp)
+            )
