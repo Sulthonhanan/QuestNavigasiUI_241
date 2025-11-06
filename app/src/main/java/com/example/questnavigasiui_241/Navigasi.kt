@@ -100,4 +100,12 @@ fun FormIsian(
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.padding(horizontal = 8.dp)
-                    )
+                    ) {
+                        RadioButton(
+                            selected = selectedJenis == item,
+                            onClick = { selectedJenis = item }
+                        )
+                        Text(text = item)
+                    }
+                }
+            }
