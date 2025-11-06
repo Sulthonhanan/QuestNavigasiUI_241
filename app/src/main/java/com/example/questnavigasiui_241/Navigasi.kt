@@ -1,40 +1,39 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.example.questnavigasiui_241
 
-import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import java.lang.reflect.Modifier
 
 enum class Navigasi {
-
     Formulir,
-
     Detail
 }
 
 @Composable
-
-fun DetaApp(
+fun DataApp(
     navController: NavHostController = rememberNavController(),
-    modifier: Modifier
-){
-    Scaffold { IsiRuang->
+    modifier: Modifier = Modifier
+) {
+    Scaffold { isiRuang ->
         NavHost(
             navController = navController,
             startDestination = Navigasi.Formulir.name,
-
-            modifier = Modifier.padding(padding.values = IsiRuang)
-
-
-
-
-
-
-
+            modifier = Modifier.padding(isiRuang)
         )
-
-    }
-}
