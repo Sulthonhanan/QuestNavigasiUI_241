@@ -141,4 +141,9 @@ fun FormIsian(
 @Composable
 fun TampilData(
     onBackBtnClick: () -> Unit
-)
+) {
+    val items = listOf(
+        Pair("Nama Lengkap", "Contoh Nama"),
+        Pair("Jenis Kelamin", "Lainnya"),
+        Pair("Alamat", "Yogyakarta")
+    )
