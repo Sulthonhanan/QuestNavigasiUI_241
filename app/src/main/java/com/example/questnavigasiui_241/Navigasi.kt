@@ -125,3 +125,15 @@ fun FormIsian(
                 singleLine = true,
                 modifier = Modifier.width(250.dp)
             )
+
+            Spacer(modifier = Modifier.height(30.dp))
+
+            Button(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = OnSubmitBtnClick
+            ) {
+                Text(text = "Submit")
+            }
+        }
+    }
+}
