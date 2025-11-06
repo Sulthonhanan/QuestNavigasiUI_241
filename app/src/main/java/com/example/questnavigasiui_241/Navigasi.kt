@@ -70,3 +70,9 @@ fun FormIsian(
         var alamat by remember { mutableStateOf("") }
         var selectedJenis by remember { mutableStateOf("") }
 
+        Column(
+            modifier = Modifier
+                .padding(isiRuang)
+                .fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        )
