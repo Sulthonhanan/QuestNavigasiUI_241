@@ -1,7 +1,5 @@
 package com.example.questnavigasiui_241.View
 
-package com.example.navigasiku.view
-
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -15,7 +13,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.navigasiku.R
+import com.example.questnavigasiui_241.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
