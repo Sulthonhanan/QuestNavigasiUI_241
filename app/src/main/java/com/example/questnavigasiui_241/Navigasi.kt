@@ -65,4 +65,8 @@ fun FormIsian(
                 )
             )
         }
-    )
+    ) { isiRuang ->
+        var nama by remember { mutableStateOf("") }
+        var alamat by remember { mutableStateOf("") }
+        var selectedJenis by remember { mutableStateOf("") }
+
