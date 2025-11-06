@@ -168,4 +168,6 @@ fun TampilData(
             Column(
                 modifier = Modifier.padding(all = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
-            )
+            ) {
+                items.forEach { item ->
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
