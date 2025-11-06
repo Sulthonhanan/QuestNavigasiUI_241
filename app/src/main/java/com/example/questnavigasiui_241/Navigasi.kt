@@ -175,6 +175,12 @@ fun TampilData(
                             text = item.first.uppercase(),
                             fontSize = 16.sp
                         )
+                        Text(
+                            text = item.second,
+                            fontWeight = FontWeight.Bold,
+                            fontFamily = FontFamily.Cursive,
+                            fontSize = 22.sp
+                        )
             }
         }
     }
