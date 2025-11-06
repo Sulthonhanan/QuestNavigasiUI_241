@@ -1,25 +1,15 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
+package com.example.navigasiku
 
-package com.example.questnavigasiui_241
-
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import androidx.navigation.NavHostController
+import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavHostController
+import androidx.compose.material3.Scaffold
+import androidx.compose.ui.Modifier
+import androidx.compose.foundation.layout.padding
+import com.example.navigasiku.view.FormIsian
+import com.example.navigasiku.view.TampilData
 
 enum class Navigasi {
     Formulir,
@@ -29,171 +19,34 @@ enum class Navigasi {
 @Composable
 fun DataApp(
     navController: NavHostController = rememberNavController(),
-    modifier: Modifier = Modifier
-) {
+    modifier: Modifier
+){
     Scaffold { isiRuang ->
         NavHost(
             navController = navController,
             startDestination = Navigasi.Formulir.name,
-            modifier = Modifier.padding(isiRuang)
+            modifier = Modifier.padding(paddingValues = isiRuang)
         ) {
-            composable(Navigasi.Formulir.name) {
+            composable(route = Navigasi.Formulir.name) {
                 FormIsian(
-                    OnSubmitBtnClick = { navController.navigate(Navigasi.Detail.name) }
+                    // pilihanJK = JenisK.map { id -> konteks.resources.getString(id) },
+                    OnSubmitBtnClick = {
+                        navController.navigate(route = Navigasi.Detail.name)
+                    }
                 )
             }
-            composable(Navigasi.Detail.name) {
+
+            composable(route = Navigasi.Detail.name) {
                 TampilData(
-                    onBackBtnClick = { navController.popBackStack() }
+                    onBackBtnClick = { cancelAndBackToFormulir(navController) }
                 )
             }
         }
     }
 }
 
-@Composable
-fun FormIsian(
-    jenisK: List<String> = listOf("Laki-laki", "Perempuan"),
-    OnSubmitBtnClick: () -> Unit
+private fun cancelAndBackToFormulir(
+    navController: NavHostController
 ) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(text = "Formulir", color = Color.White) },
-                colors = TopAppBarDefaults.mediumTopAppBarColors(
-                    containerColor = colorResource(id = R.color.teal_700)
-                )
-            )
-        }
-    ) { isiRuang ->
-        var nama by remember { mutableStateOf("") }
-        var alamat by remember { mutableStateOf("") }
-        var selectedJenis by remember { mutableStateOf("") }
-
-        Column(
-            modifier = Modifier
-                .padding(isiRuang)
-                .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            OutlinedTextField(
-                value = nama,
-                onValueChange = { nama = it },
-                label = { Text("Nama Lengkap") },
-                singleLine = true,
-                modifier = Modifier
-                    .padding(top = 20.dp)
-                    .width(250.dp)
-            )
-
-            HorizontalDivider(
-                modifier = Modifier
-                    .padding(20.dp)
-                    .width(250.dp),
-                thickness = 1.dp,
-                color = Color.Red
-            )
-
-            // Pilihan Jenis Kelamin
-            Row {
-                jenisK.forEach { item ->
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.padding(horizontal = 8.dp)
-                    ) {
-                        RadioButton(
-                            selected = selectedJenis == item,
-                            onClick = { selectedJenis = item }
-                        )
-                        Text(text = item)
-                    }
-                }
-            }
-
-            HorizontalDivider(
-                modifier = Modifier
-                    .padding(20.dp)
-                    .width(250.dp),
-                thickness = 1.dp,
-                color = Color.Red
-            )
-
-            OutlinedTextField(
-                value = alamat,
-                onValueChange = { alamat = it },
-                label = { Text("Alamat") },
-                singleLine = true,
-                modifier = Modifier.width(250.dp)
-            )
-
-            Spacer(modifier = Modifier.height(30.dp))
-
-            Button(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = OnSubmitBtnClick
-            ) {
-                Text(text = "Submit")
-            }
-        }
-    }
-}
-
-@Composable
-fun TampilData(
-    onBackBtnClick: () -> Unit
-) {
-    val items = listOf(
-        Pair("Nama Lengkap", "Contoh Nama"),
-        Pair("Jenis Kelamin", "Lainnya"),
-        Pair("Alamat", "Yogyakarta")
-    )
-
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(text = "Data Tampil", color = Color.White) },
-                colors = TopAppBarDefaults.mediumTopAppBarColors(
-                    containerColor = colorResource(id = R.color.teal_700)
-                )
-            )
-        }
-    ) { isiRuang ->
-        Column(
-            modifier = Modifier
-                .padding(isiRuang)
-                .fillMaxWidth(),
-            verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Column(
-                modifier = Modifier.padding(all = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                items.forEach { item ->
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text(
-                            text = item.first.uppercase(),
-                            fontSize = 16.sp
-                        )
-                        Text(
-                            text = item.second,
-                            fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily.Cursive,
-                            fontSize = 22.sp
-                        )
-                        HorizontalDivider(thickness = 1.dp, color = Color.Cyan)
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(10.dp))
-
-            Button(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = onBackBtnClick
-            ) {
-                Text(text = "Back")
-            }
-        }
-    }
+    navController.popBackStack(route = Navigasi.Formulir.name, inclusive = false)
 }
